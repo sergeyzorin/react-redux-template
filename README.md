@@ -7,3 +7,8 @@ Just a basic project with setted up:
 * babel with es6 and React support 
 * redux: presentation and container components, actions, reducers and initialized start page
 * index page with added bootstrap and awesomefonts CDN links
+
+planned:
+* mocha unit tests for client code in browser
+* backend server via expressjs
+* backed unit tests in mocha
