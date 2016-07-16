@@ -1,5 +1,6 @@
 var express = require( 'express' );
 var router = express.Router();
+var logic = require( "./logic" );
 
 //простые обертки для классических случаев запроса-ответа.
 const sendResult = action => ( req, res ) => res.send( action() );
@@ -10,22 +11,10 @@ router.get( "/test", function( req, res ) {
 } )
 
 router.get( "/test4", function( req, res ) {
-  res.send( delayedGetData( "new promised message" ) );
+  res.send( logic.promiseMessage( "delayed message - 4" ) );
 } )
 
-
-router.get( "/test2", sendResult( getData ) );
-router.get( "/test3", sendResult( delayedGetData ) );
-
-function getData( message ) {
-  return { id: 1, text: message || "just a test" };
-}
-
-function delayedGetData( message ) {
-  return new Promise( function( resolve, reject ) {
-    setTimeout( () => resolve( getData( message || "promised message" ) ), 1500 );
-  } );
-}
-
+router.get( "/test2", sendResult( logic.createMessage ) );
+router.get( "/test3", sendResult( logic.promiseMessage.bind( null, "test3 - in promise" ) ) );
 
 module.exports = router;
