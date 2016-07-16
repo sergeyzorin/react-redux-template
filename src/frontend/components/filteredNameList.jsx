@@ -4,7 +4,7 @@ require("./filteredNameList.less");
 
 module.exports = function( props ) {
   return <div className="panel panel-default namelist">
-    <div className="panel-heading">Список</div>
+    <div className="panel-heading">City list</div>
     <div className="panel-body">
       <Filter {...props} />
       <NameList {...props} />
