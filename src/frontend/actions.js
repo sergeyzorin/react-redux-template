@@ -2,7 +2,7 @@ const ActionTypes = {
   FILTER_LIST: "FILTER_LIST"
 };
 
-const filter = (text) => {
+const filter = ( text ) => {
   return { type: ActionTypes.FILTER_LIST, filter: text }
 };
 
