@@ -3,10 +3,10 @@ var actions = require( "../actions" );
 //var selectors = require("../selectors");
 
 function mapStateToProps( state ) {
-  var filter = state.cities.filter;
+  var filter = state.cities.filter || "";
   return {
     //items: selectors.getVisibleItems(state),
-    names: state.cities.names.filter( n => n.toLowerCase().contains( filter.toLowerCase() ) ),
+    names: state.cities.names.filter( n => n.toLowerCase().indexOf( filter.toLowerCase() ) >= 0 ),
     filterText: filter
   };
 };
