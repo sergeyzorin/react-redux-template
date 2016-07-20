@@ -1,4 +1,4 @@
-const ActionTypes = require( "../actions" ).ActionTypes;
+const ActionType = require( "../actions" ).ActionType;
 
 //этот код надо вынести в отдельный файл в реальном проекте
 function citiesReducer( state, action ) {
@@ -6,9 +6,10 @@ function citiesReducer( state, action ) {
     state = { filter: "", names: [ 'Moscow', 'Voronezh', 'Samara', 'Tomsk', 'Omsk' ] };
   };
   switch ( action.type ) {
-    case ActionTypes.FILTER_LIST:
+    case ActionType.LOAD_CITY_LIST_SUCCESS:
+      return Object.assign( {}, state, {names: action.data} );
+    case ActionType.FILTER_LIST:
       return Object.assign( {}, state, { filter: action.filter } );
-      break;
     default:
       return state;
   }

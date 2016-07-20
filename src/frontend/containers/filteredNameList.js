@@ -12,7 +12,8 @@ function mapStateToProps( state ) {
 };
 
 var dispatchMap = {
-  onChange: actions.filter
+  onChange: actions.filter,
+  onMount: actions.loadCityList
 };
 
 module.exports = connect( mapStateToProps, dispatchMap )( require( "../components/filteredNameList.jsx" ) );
