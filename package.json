@@ -6,7 +6,7 @@
   "scripts": {
     "start": "set NODE_ENV=development&& node devServer.js",
     "startB": "set NODE_ENV=development&& start nodemon ./src/backend/server.js&& node devServer.js",
-    "test": "mocha ./src/tests/tests.js",
+    "test": "mocha ./src/backend/tests.js",
     "test:watch": "npm run test -- --watch",
     "build": "set NODE_ENV=production&& webpack --config ./webpack.production.config.js"
   },
