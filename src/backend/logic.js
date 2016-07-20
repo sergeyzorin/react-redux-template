@@ -1,12 +1,13 @@
 //just a test method
-function createMessage( text ) {
-  return { id: 1, message: text || "just a test message" };
+function loadCities() {
+  return [ 'Moscow', 'Voronezh', 'Samara', 'Tomsk', 'Omsk', 'Tula' ];
 }
 
-function promiseMessage( text, delay ) {
-  return new Promise( function( resolve, reject ) {
-    setTimeout( () => resolve( createMessage( text || "promised message" ) ), delay || 1500 );
-  } );
+function promiseLoadCities() {
+  return Promise.resolve( loadCities() );
+  // return new Promise( function( resolve, reject ) {
+  //   setTimeout( () => resolve( loadCities ), delay || 1500 );
+  // } );
 }
 
-module.exports = { createMessage, promiseMessage };
+module.exports = { loadCities, promiseLoadCities };
