@@ -1,11 +1,23 @@
 var express = require( 'express' );
 var router = express.Router();
-var logic = require( "./logic" );
 
-//простые обертки для классических случаев запроса-ответа.
-const sendResult = action => ( req, res ) => res.send( action() );
-const sendResultForId = action => ( req, res ) => res.send( action( req.params.id ) );
+let cities = [ 'Moscow', 'Voronezh', 'Samara', 'Tomsk', 'Omsk', 'Tula', 'Krasnodar' ];
 
-router.get( "/cities", sendResult( logic.promiseLoadCities ) );
+router.get( "/cities", function( req, res ) {
+  res.send( cities );
+} );
+
+router.post( "/cities/", function( req, res ) {
+  console.log( "post on cities", req.body );
+  cities.push( req.body.name );
+  res.send( { result: "ok" } );
+  //TODO: send Created status
+} );
+
+router.put( "/cities/:id", function( req, res ) {
+  console.log( "put on cities", req.params.id, req.body );
+  cities.push( req.body.name );
+  res.send( { result: "ok", id: req.params.id } );
+} );
 
 module.exports = router;

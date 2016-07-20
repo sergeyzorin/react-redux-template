@@ -32,7 +32,7 @@ function loadCityList() {
 
     return serverApi.loadCityList( )
       .then( data => dispatch( action( ActionType.LOAD_CITY_LIST_SUCCESS, { data } ) ) )
-      .catch( processErrorHandler( dispatch, "Ошибка при загрузке списка действий", ActionType.LOAD_CITY_LIST_FAIL ) );
+      .catch( processErrorHandler( dispatch, "Error at loading city list", ActionType.LOAD_CITY_LIST_FAIL ) );
   }
 }
 

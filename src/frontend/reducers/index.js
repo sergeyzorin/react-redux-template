@@ -3,7 +3,7 @@ const ActionType = require( "../actions" ).ActionType;
 //этот код надо вынести в отдельный файл в реальном проекте
 function citiesReducer( state, action ) {
   if ( !state ) {
-    state = { filter: "", names: [ 'Moscow', 'Voronezh', 'Samara', 'Tomsk', 'Omsk' ] };
+    state = { filter: "", names: [ 'Moscow', 'Voronezh' ] };
   };
   switch ( action.type ) {
     case ActionType.LOAD_CITY_LIST_SUCCESS:

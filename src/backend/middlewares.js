@@ -16,24 +16,14 @@ function promiseify( request, response, next ) {
       resultOrPromise
         .then( result => response.send( result ) )
         .catch( error => {
-          throw next( error ) } )
+          throw next( error )
+        } )
     } else {
       return baseSend( resultOrPromise );
     }
   }
   next();
 }
-
-// function promiseify(request, response, next) {
-//     response.promiseSend = function(promise) {
-//         promise.then(function(result) {
-//             response.send(result);
-//         }).catch(function(error) {
-//             throw next(error);
-//         });
-//     }
-//     next();
-// }
 
 const logRequest = function( req, res, next ) {
   console.log( moment().format( "YYYY.MM.DD HH:mm:ss" ), 'requested', req.path, req.query );

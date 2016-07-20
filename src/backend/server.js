@@ -1,13 +1,13 @@
 "use strict";
-var basePath = __dirname + '/../../public/';
-var port = 4000;
+const basePath = __dirname + '/../../public/';
+const port = 4000;
 
-var express = require( 'express' );
-var app = express();
+const express = require( 'express' );
+const app = express();
 const middlewares = require( "./middlewares" );
-// var bodyParser = require( 'body-parser' );
-// app.use( bodyParser.json() ); // support json encoded bodies
-// app.use( bodyParser.urlencoded( { extended: true } ) ); // support encoded bodies
+const bodyParser = require( 'body-parser' );
+app.use( bodyParser.json() ); // support json encoded bodies
+app.use( bodyParser.urlencoded( { extended: true } ) ); // support encoded bodies
 
 //session and auth
 //const session = require("express-session" );
