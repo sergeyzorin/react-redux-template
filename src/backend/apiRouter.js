@@ -4,7 +4,7 @@ var router = express.Router();
 let cities = [ 'Moscow', 'Voronezh', 'Samara', 'Tomsk', 'Omsk', 'Tula', 'Krasnodar' ];
 
 router.get( "/cities", function( req, res ) {
-  res.send( cities );
+   res.send( cities );
 } );
 
 router.post( "/cities/", function( req, res ) {

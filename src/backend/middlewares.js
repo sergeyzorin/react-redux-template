@@ -10,17 +10,10 @@ const moment = require( "moment" );
 function promiseify( request, response, next ) {
   var baseSend = response.send.bind( response );
   response.send = function( resultOrPromise ) {
-    //TODO: normal check for promise
-    if ( resultOrPromise.then ) {
-      //promise
-      resultOrPromise
-        .then( result => response.send( result ) )
-        .catch( error => {
-          throw next( error )
-        } )
-    } else {
-      return baseSend( resultOrPromise );
-    }
+    //no matter is it promise or static result - it can be resolved (static will resolve immediately)
+    Promise.resolve( resultOrPromise )
+      .then( result => baseSend( result ) )
+      .catch( error => { throw next( error ) } );
   }
   next();
 }
@@ -30,9 +23,7 @@ const logRequest = function( req, res, next ) {
   next();
 };
 const delay = function( req, res, next ) {
-  setTimeout( function() {
-    next();
-  }, 1500 );
+  setTimeout( () => next(), 1500 );
 };
 
 function logErrors( err, req, res, next ) {
